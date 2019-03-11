@@ -1,3 +1,0 @@
-name1=champak
-repo2=test1
-repo3=test2

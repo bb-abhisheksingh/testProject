@@ -18,6 +18,16 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
               <transformers>
                 <transformer>
                   <resource>test1.txt</resource>
@@ -32,27 +42,17 @@
         <version>2.2</version>
         <executions>
           <execution>
-            <id>unpackModule1</id>
+            <id>unpackModuleApp</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>unpack-dependencies</goal>
             </goals>
             <configuration>
-              <includeGroupIds>org.abhi</includeGroupIds>
-              <includeArtifactIds>module1</includeArtifactIds>
-              <outputDirectory>src/main/resources/module1</outputDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <id>unpackModule2</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <includeGroupIds>org.abhi</includeGroupIds>
-              <includeArtifactIds>module2</includeArtifactIds>
-              <outputDirectory>src/main/resources/module2</outputDirectory>
+              <includeGroupIds>com.bankbazaar</includeGroupIds>
+              <outputDirectory>src/main/resources/</outputDirectory>
+              <includes>**\/hibernate.cfg.xml</includes>
+              <useSubDirectoryPerArtifact>true</useSubDirectoryPerArtifact>
+              <stripVersion>true</stripVersion>
             </configuration>
           </execution>
         </executions>
